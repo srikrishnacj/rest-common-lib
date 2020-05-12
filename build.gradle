@@ -47,6 +47,17 @@ test {
  * ************             Publish to Bintray           *************
  * *******************************************************************
  */
+// only publish if the jar is being build from master or release branch.
+// this helps in CICD not pushlish to many artifacts to repository
+tasks.matching { it.name == "bintrayUpload" }.all {
+    onlyIf {
+        def branch = versionDetails().branchName
+        branch = branch != null ? branch.toLowerCase() : null;
+        branch != null && (branch == "master" || branch == "release")
+    }
+}
+
+
 publishing {
     publications {
         MyPublication(MavenPublication) {
