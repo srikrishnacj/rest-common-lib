@@ -10,6 +10,7 @@ public abstract class ApplicationContextHolder implements ApplicationContextAwar
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
+        System.out.println();
     }
 
     public static ApplicationContext getApplicationContext() {
