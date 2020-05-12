@@ -11,3 +11,7 @@ steps:
   image: gradle
   commands:
     - ./gradlew clean build bintrayUpload
+
+trigger:
+  branch:
+    - master
